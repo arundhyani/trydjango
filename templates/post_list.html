@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1> Hi everyone</h1>
+	{%for obj in objects_list%}
+<!--		<p>{{obj.id}} . <a href='{% url "posts:postdetail" id=obj.id %}' >{{obj.title}}</a></p>    -->
+		<p>{{obj.id}} . <a href= {{obj.get_absolute_url}}>{{obj.title}}</a></p>
+		<p>{{obj.content | truncatewords:25 }}</p>
+		<hr>
+	{%endfor%}
+	<div class="pagination">
+		<span class="step-links">
+			{% if objects_list.has_previous %}
+			<a href="?{{page_var}}={{ objects_list.previous_page_number }}">previous</a>
+			{% endif%}
+			<span class="current">
+				Page {{ objects_list.number }} of {{ objects_list.paginator.num_pages }}.
+			</span>
+
+			{% if objects_list.has_next %}
+			<a href="?{{ page_var }}={{ objects_list.next_page_number }}">next</a>        {% endif %}
+		</span>
+	</div>
+{% endblock content %}

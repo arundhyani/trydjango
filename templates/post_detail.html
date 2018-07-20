@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} {{obj.title}} | {{block.super}}  {%endblock title%}
+	{% block content %}
+	<div class='col-sm-6 col-sm-offset-3'>
+		<h1> {{obj.title}} </h1>
+		<small><p>{{obj.timestamp}}</p> </small>
+		<p>{{obj.content|linebreaks}}</p>
+		<hr>
+	{% endblock content %}

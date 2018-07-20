@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>
+		Home
+		</title>
+		<link rel='stylesheet' href='{% static "/css/base.css" %}'/>
+	</head>
+	<body> 
+	<h1> Hi everyone</h1>
+	{%for obj in objects_list%}
+	<!--		<p>{{obj.id}} . <a href='{% url "posts:postdetail" id=obj.id %}' >{{obj.title}}</a></p>    -->
+		<p>{{obj.id}} . <a href= {{obj.get_absolute_url}}>{{obj.title}}</a></p>
+		<p>{{obj.content | truncatewords:25 }}</p>
+		<hr>
+	{%endfor%}
+	</body>
+</html>
