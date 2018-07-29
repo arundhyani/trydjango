@@ -6,13 +6,13 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Post 
 from .forms import PostForm
 # Create your views here.
-
+ 
 
 def post_create(request):
     if(request.method == 'POST') :
         print(request.POST.get("content"))
         print(request.POST.get("title"))
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None ,request.FILES or None)
     if(form.is_valid()) :
         instance = form.save(commit=False)
         instance.save()
@@ -42,7 +42,7 @@ def post_list(request): #list items
 
     context = {
             "objects_list" : objects_list,
-            "title" :  "List"
+            "title" :  "List",
             "page_var" : page_var
             }
 #    print(context['objects_list'],'\n','\n','\n')
@@ -51,7 +51,7 @@ def post_list(request): #list items
 
 def post_update(request,id=None):
     instance = get_object_or_404(Post,id=id)
-    form = PostForm(request.POST or None,instance=instance)
+    form = PostForm(request.POST or None,request.FILES or None,instance=instance)
     if(form.is_valid()) :
         instance = form.save(commit=False)
         instance.save()

@@ -3,7 +3,10 @@
 	{% block content %}
 	<div class='col-sm-6 col-sm-offset-3'>
 		<h1> {{obj.title}} </h1>
+		{% if obj.image%}
+		<img src='{{ obj.image.url }}' class = 'img-responsive'>
 		<small><p>{{obj.timestamp}}</p> </small>
 		<p>{{obj.content|linebreaks}}</p>
 		<hr>
+		{% endif %}
 	{% endblock content %}
