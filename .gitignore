@@ -1,0 +1,4 @@
+posts/migrations/
+db.sqlite3
+posts/__pycache__/
+trydjango/__pycache__/
