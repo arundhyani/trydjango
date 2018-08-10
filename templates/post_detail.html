@@ -6,6 +6,21 @@
 		{% if obj.image%}
 		<img src='{{ obj.image.url }}' class = 'img-responsive'>
 		<small><p>{{obj.timestamp}}</p> </small>
+		<h1>{{request.build_absoulte_uri}}</h1>
+		<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+ 			Facebook
+ 		</a>
+		<a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}">
+ 			<Twitter></Twitter>
+ 		</a>
+		<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}">
+ 			Linkedin
+ 		</a>
+
+ 		<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}.">
+			Reddit
+		</a>
+
 		<p>{{obj.content|linebreaks}}</p>
 		<hr>
 		{% endif %}
