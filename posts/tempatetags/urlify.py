@@ -3,5 +3,9 @@ from django import template
 
 register = template.Library()
 
-def urlify(value) :
+assert isinstance(register.filter, object)
+
+
+@register.filter
+def urlify(value):
     return quote_plus(value)
